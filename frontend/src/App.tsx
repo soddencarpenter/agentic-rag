@@ -1,35 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// Core routing components
+import Router from 'routes/router'
+import { BrowserRouter } from "react-router"
+// Material-UI layout component
+import { Box } from '@mui/material'
+// Custom navigation component
+import NavigationTabs from 'components/NavigationTabs'
 
+/**
+ * Main application component.
+ * 
+ * Sets up the routing context and renders the main layout structure:
+ * - BrowserRouter: Enables client-side routing
+ * - NavigationTabs: Tab-based navigation between pages
+ * - Router: Route definitions and page rendering
+ * 
+ * @returns JSX element containing the full application structure
+ */
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  return <BrowserRouter>  {/* Enable browser-based routing */}
+    <Box sx={{ width: '100vw', minHeight: '100vh' }}>  {/* Full viewport container */}
+      <NavigationTabs />  {/* Navigation tabs at the top */}
+      <Router />          {/* Main content area with route-based rendering */}
+    </Box>
+  </BrowserRouter>
 }
 
 export default App
